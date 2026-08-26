@@ -1,0 +1,190 @@
+# ============================================
+# Environment and Configuration Files
+# ============================================
+# Environment variables and secrets
+.env
+.env.*
+*.env
+
+# Bob AI assistant configuration
+.bob
+
+# Ansible configuration and cache
+.ansible
+
+# MCP (Model Context Protocol) configuration
+mcp.json
+
+# ============================================
+# Bash Script Development
+# ============================================
+# Backup files created by editors
+*.bak
+*.backup
+*~
+*.swp
+*.swo
+
+# Shell script temporary files
+*.tmp
+*.temp
+.*.tmp
+
+# Log files from script execution
+*.log
+logs/
+*.out
+
+# Debug output files
+debug.txt
+trace.log
+
+# Script-generated data files (customize as needed)
+output/
+results/
+data/*.csv
+data/*.json
+
+# ============================================
+# Ansible Development
+# ============================================
+# Ansible retry files (created on playbook failures)
+*.retry
+
+# Ansible vault password files (NEVER commit these!)
+.vault_pass
+.vault_password
+vault_pass.txt
+*vault*pass*
+
+# Ansible Galaxy downloaded roles (if using requirements.yml)
+roles/external/
+galaxy_roles/
+
+# Ansible collections cache
+collections/
+
+# Ansible fact cache
+fact_cache/
+*.fact
+
+# Ansible inventory files with sensitive data
+inventory/production
+inventory/prod
+hosts.ini
+
+# Ansible variable files with secrets (use vault instead)
+group_vars/*/vault.yml
+host_vars/*/vault.yml
+**/secrets.yml
+**/credentials.yml
+
+# Ansible temporary files
+.ansible_async/
+ansible.cfg.bak
+
+# ============================================
+# Testing and Development
+# ============================================
+# Test output and coverage
+test-results/
+coverage/
+.coverage
+htmlcov/
+
+# Virtual environments (if using Python with Ansible)
+venv/
+.venv/
+env/
+ENV/
+
+# Python bytecode (Ansible modules/plugins)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ============================================
+# IDE and Editor Files
+# ============================================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# OS Generated Files
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# Security and Credentials
+# ============================================
+# SSH keys (should never be in repo)
+*.pem
+*.key
+*.ppk
+id_rsa*
+id_ed25519*
+
+# SSL/TLS certificates
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# API keys and tokens
+*token*
+*apikey*
+*api_key*
+credentials.json
+
+# ============================================
+# Build and Distribution
+# ============================================
+# Compressed files
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.rar
+
+# Distribution directories
+dist/
+build/
+*.egg-info/

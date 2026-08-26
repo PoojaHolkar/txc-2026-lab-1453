@@ -1,0 +1,9 @@
+---
+- name: Output message that pre-destroy phase is running
+  hosts: localhost
+  gather_facts: false
+  tasks:
+
+    - name: Notify user pre-destroy play running
+      ansible.builtin.debug:
+        msg: The pre_destroy.yaml play is now running.

@@ -1,0 +1,274 @@
+{
+    "services": [
+        {
+            "friendly_name": "Watson Machine Learning",
+            "instance": "",
+            "service": "pm-20",
+            "prefix": "wml",
+            "plan": "v2-standard",
+            "parameters": {},
+            "resource_group_id": "",
+            "region": "",
+            "lock": "false",
+            "enable": "true"
+        },
+        {
+            "friendly_name": "Watson Studio",
+            "instance": "",
+            "service": "data-science-experience",
+            "prefix": "ws",
+            "plan": "free-v1",
+            "parameters": {},
+            "resource_group_id": "",
+            "region": "",
+            "lock": "false",
+            "enable": "true"
+        },
+        {
+            "friendly_name": "Cloud Object Storage",
+            "instance": "",
+            "prefix": "cos",
+            "service": "cloud-object-storage",
+            "plan": "standard",
+            "parameters": {},
+            "resource_group_id": "",
+            "region": "global",
+            "lock": "false",
+            "enable": "true"
+        },
+        {
+            "friendly_name": "watsonx.data intelligence",
+            "instance": "",
+            "prefix": "ikc",
+            "service": "datacatalog",
+            "plan": "essentials",
+            "parameters": {},
+            "resource_group_id": "",
+            "region": "",
+            "create": "1h",
+            "lock": "false",
+            "enable": "false"
+        },
+        {
+            "friendly_name": "watsonx.governance",
+            "instance": "",
+            "prefix": "gov",
+            "service": "aiopenscale",
+            "plan": "essentials",
+            "parameters": {},
+            "resource_group_id": "",
+            "region": "",
+            "create": "6h",
+            "lock": "false",
+            "enable": "true"
+        }
+    ],
+    "access": [
+        {
+            "instance": "ml_policy",
+            "friendly_name": "Machine Learning Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "pm-20": "Manager,Administrator"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "opg_policy",
+            "friendly_name": "OpenPages Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "openpages": "OpenPages User"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "false"
+        },     
+        {
+            "instance": "gov_policy",
+            "friendly_name": "watsonx.governance Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "openpages": "Viewer,Administrator,Operator,Editor"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "ws_policy",
+            "friendly_name": "Watson Studio Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "data-science-experience": "Viewer,Operator,Editor,Service Configuration Reader"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "watsonx.gov_policy",
+            "friendly_name": "Governance Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "aiopenscale": "Reader,Writer,Viewer,Operator,Editor,Administrator"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "db2_policy",
+            "friendly_name": "Db2 Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "dashdb-for-transactions": "Manager,Viewer,Operator,Editor"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "cos_policy",
+            "friendly_name": "Cloud Object Storage Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "cloud-object-storage": "Administrator,Manager,Viewer,Operator,Editor"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "wkc_policy",
+            "friendly_name": "watsonx.data Intelligence Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "datacatalog": "Writer,Manager,Viewer,Operator,Editor,Watsonx.data Service Access (For Service to Service Authorization Only) for IKC"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "appid_policy",
+            "friendly_name": "App ID Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "appid": "Manager,Editor"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "cp4d_policy",
+            "friendly_name": "CP4D Policy",
+            "access_group_id": "",
+            "account_level_services_and_roles": {
+                "cp4d": "Manager,Editor,Governance Artifacts Administrator,CloudPak Data Source Administrator,Lineage Administrator,CloudPak Data Steward,CloudPak Data Engineer"
+            },
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        },
+        {
+            "instance": "default_access",
+            "friendly_name": "Default access",
+            "access_group_id": "",
+            "account_level_services_and_roles": {},
+            "all_iam_account_management_services_roles": "Administrator,Service ID creator,User API key creator,API key reviewer",
+            "all_iam_enabled_services_roles": "",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "Administrator",
+            "enable": "true"
+        },
+        {
+            "instance": "Resource ownership",
+            "friendly_name": "Resource owner",
+            "access_group_id": "",
+            "account_level_services_and_roles": {},
+            "all_iam_account_management_services_roles": "",
+            "all_iam_enabled_services_roles": "Administrator,Manager,Reader,Writer,Viewer,Operator,Service Configuration Reader,Key Manager",
+            "global_resource_group_management_roles": "",
+            "resource_group_id": "",
+            "resource_group_services_and_roles": {},
+            "specific_resource_group_access_roles": "",
+            "specific_resource_group_management_roles": "",
+            "enable": "true"
+        }
+    ],
+    "authorizations": [
+        {
+            "instance": "wxd_ikc_authorizations",
+            "friendly_name": "watsonx.data to data intelligence authorization",
+            "service_to_service_authorizations": "{\"datacatalog=lakehouse\":\"DataAccess,MetastoreViewer,Viewer\",\"lakehouse=datacatalog\":\"Watsonx.data Service Access (For Service to Service Authorization Only) for IKC\"}",
+            "service_to_resource-type_authorizations":"{}",
+            "enable": "false"
+        }
+    ],
+    "idp": {        
+        "image_filepath": "https://dte2.s3.us-east.cloud-object-storage.appdomain.cloud/tzbackground.jpg",
+        "image_filetype": "jpeg", 
+        "default_idp": "true",         
+        "use_long_format": "true",        
+        "signup_enabled": "false",        
+        "is_mfa_active": "false",        
+        "self_service_enabled": "false"     
+    }
+}

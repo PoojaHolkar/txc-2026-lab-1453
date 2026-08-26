@@ -1,0 +1,12 @@
+[
+  {
+    "service": "<insert service name as per Global Catalog>",
+    "prefix": "<insert desired prefix, normally itz>",
+    "suffix": "<insert desired prefix, normally reference service name>",
+    "plan": "<insert plan name like lite>",
+    "policies": "<insert policy for the service like Editor>",
+    "datacenter": "<insert region, leave empty to overrride on TechZone UI level>",
+    "lock": "<recommended to lock by default, insert true or false>",
+    "parameters": "<insert any additional parameters supported or leave as null if not applicable>"
+  }
+]
