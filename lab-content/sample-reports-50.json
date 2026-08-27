@@ -1,0 +1,1046 @@
+{
+  "metadata": {
+    "description": "50 sample pathology reports for LabCheck POV",
+    "created": "2026-04-17",
+    "distribution": {
+      "legitimate": 30,
+      "sink_test_fraud": 12,
+      "kickback_fraud": 8
+    },
+    "sink_test_labs": ["Quick Lab Diagnostics", "Speedy Path Lab"],
+    "kickback_doctors": ["Dr. Vinod Mehta"]
+  },
+
+  "reports": [
+    {
+      "report_id": "RPT-001",
+      "uploaded_at": "2026-04-15T09:00:00+05:30",
+      "lab": {"name": "Dr. Lal PathLabs", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Arvind Lal", "registration_number": "MH-1990-00001"},
+      "referring_doctor": {"name": "Dr. Sanjay Shah", "registration_number": "MH-2008-66666"},
+      "patient": {"age": 45, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T07:00:00+05:30", "report_generated": "2026-04-15T11:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 232, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Triglycerides", "value": 195, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 38, "unit": "mg/dL", "flag": "LOW"},
+        {"parameter": "LDL", "value": 155, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 850,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-002",
+      "uploaded_at": "2026-04-15T09:30:00+05:30",
+      "lab": {"name": "Thyrocare", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. A. Velumani", "registration_number": "MH-1995-00123"},
+      "referring_doctor": {"name": "Dr. Meera Nair", "registration_number": "MH-2010-45678"},
+      "patient": {"age": 32, "gender": "F"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T08:00:00+05:30", "report_generated": "2026-04-15T14:00:00+05:30", "turnaround_minutes": 360},
+      "results": [
+        {"parameter": "TSH", "value": 6.8, "unit": "mIU/L", "flag": "HIGH"},
+        {"parameter": "T3", "value": 0.9, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "T4", "value": 5.2, "unit": "mcg/dL", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 3,
+      "amount_paid": 650,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-003",
+      "uploaded_at": "2026-04-15T10:00:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Rajesh Gupta", "registration_number": "DL-2008-11111"},
+      "patient": {"age": 52, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T09:00:00+05:30", "report_generated": "2026-04-15T09:28:00+05:30", "turnaround_minutes": 28},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 188, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 142, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HDL", "value": 48, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 112, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 1200,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-004",
+      "uploaded_at": "2026-04-15T10:15:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Sunil Kapoor", "registration_number": "DL-2005-22222"},
+      "patient": {"age": 48, "gender": "F"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T09:30:00+05:30", "report_generated": "2026-04-15T09:55:00+05:30", "turnaround_minutes": 25},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 185, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 138, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HDL", "value": 52, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 105, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 1200,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-005",
+      "uploaded_at": "2026-04-15T10:30:00+05:30",
+      "lab": {"name": "SRL Diagnostics", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Ramesh Iyer", "registration_number": "KA-2005-12345"},
+      "referring_doctor": {"name": "Dr. Lakshmi Rao", "registration_number": "KA-2012-33333"},
+      "patient": {"age": 38, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-15T08:30:00+05:30", "report_generated": "2026-04-15T10:30:00+05:30", "turnaround_minutes": 120},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 11.2, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "WBC", "value": 8200, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 245000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 4.1, "unit": "million/cumm", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 450,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-006",
+      "uploaded_at": "2026-04-15T11:00:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 28, "gender": "M"},
+      "test": {"name": "Full Body Checkup", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-15T07:30:00+05:30", "report_generated": "2026-04-15T15:30:00+05:30", "turnaround_minutes": 480},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 14.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Total Cholesterol", "value": 178, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "TSH", "value": 2.1, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 28, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Vitamin B12", "value": 380, "unit": "pg/mL", "flag": "NORMAL"},
+        {"parameter": "HbA1c", "value": 5.2, "unit": "%", "flag": "NORMAL"},
+        {"parameter": "Creatinine", "value": 0.95, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "SGPT", "value": 32, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 5.8, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Calcium", "value": 9.2, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 10,
+      "amount_paid": 4800,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-007",
+      "uploaded_at": "2026-04-15T11:30:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Anita Sharma", "registration_number": "DL-2010-44444"},
+      "patient": {"age": 55, "gender": "F"},
+      "test": {"name": "Liver Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T10:00:00+05:30", "report_generated": "2026-04-15T10:22:00+05:30", "turnaround_minutes": 22},
+      "results": [
+        {"parameter": "SGPT", "value": 28, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "SGOT", "value": 25, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Bilirubin Total", "value": 0.8, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Albumin", "value": 4.0, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "ALP", "value": 72, "unit": "U/L", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 5,
+      "amount_paid": 950,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-008",
+      "uploaded_at": "2026-04-15T12:00:00+05:30",
+      "lab": {"name": "Metropolis Healthcare", "city": "Chennai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Senthil Kumar", "registration_number": "TN-2008-56789"},
+      "referring_doctor": {"name": "Dr. Anand Rajan", "registration_number": "TN-2006-77777"},
+      "patient": {"age": 62, "gender": "M"},
+      "test": {"name": "Kidney Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T08:00:00+05:30", "report_generated": "2026-04-15T12:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Creatinine", "value": 1.8, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "BUN", "value": 28, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Uric Acid", "value": 8.2, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 3,
+      "amount_paid": 720,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-009",
+      "uploaded_at": "2026-04-15T12:30:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 35, "gender": "F"},
+      "test": {"name": "Comprehensive Panel", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-15T08:00:00+05:30", "report_generated": "2026-04-15T16:00:00+05:30", "turnaround_minutes": 480},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 12.5, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Total Cholesterol", "value": 192, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 145, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "TSH", "value": 3.2, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 22, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "Vitamin B12", "value": 320, "unit": "pg/mL", "flag": "NORMAL"},
+        {"parameter": "HbA1c", "value": 5.8, "unit": "%", "flag": "NORMAL"},
+        {"parameter": "SGPT", "value": 22, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Ferritin", "value": 45, "unit": "ng/mL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": false,
+      "test_count": 9,
+      "amount_paid": 5200,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-010",
+      "uploaded_at": "2026-04-15T13:00:00+05:30",
+      "lab": {"name": "Speedy Path Lab", "city": "Pune", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Manoj Patil", "registration_number": "MH-2015-99999"},
+      "referring_doctor": {"name": "Dr. Anil Desai", "registration_number": "MH-2009-88888"},
+      "patient": {"age": 42, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T11:30:00+05:30", "report_generated": "2026-04-15T11:58:00+05:30", "turnaround_minutes": 28},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 182, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 135, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HDL", "value": 50, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 105, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 1100,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-011",
+      "uploaded_at": "2026-04-15T13:30:00+05:30",
+      "lab": {"name": "Dr. Lal PathLabs", "city": "Delhi", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Vandana Lal", "registration_number": "DL-1992-00002"},
+      "referring_doctor": {"name": "Dr. Amit Kumar", "registration_number": "DL-2004-12121"},
+      "patient": {"age": 58, "gender": "F"},
+      "test": {"name": "HbA1c", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T09:00:00+05:30", "report_generated": "2026-04-15T13:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "HbA1c", "value": 7.8, "unit": "%", "flag": "HIGH"},
+        {"parameter": "Estimated Avg Glucose", "value": 177, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 2,
+      "amount_paid": 550,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-012",
+      "uploaded_at": "2026-04-15T14:00:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Neha Singh", "registration_number": "DL-2012-55555"},
+      "patient": {"age": 38, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-15T12:30:00+05:30", "report_generated": "2026-04-15T12:52:00+05:30", "turnaround_minutes": 22},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 14.2, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 7800, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 265000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 4.8, "unit": "million/cumm", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 500,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-013",
+      "uploaded_at": "2026-04-15T14:30:00+05:30",
+      "lab": {"name": "Vijaya Diagnostic Centre", "city": "Hyderabad", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Krishna Reddy", "registration_number": "TS-2004-23456"},
+      "referring_doctor": {"name": "Dr. Suresh Babu", "registration_number": "TS-2008-34567"},
+      "patient": {"age": 50, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T10:00:00+05:30", "report_generated": "2026-04-15T14:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 245, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Triglycerides", "value": 210, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 35, "unit": "mg/dL", "flag": "LOW"},
+        {"parameter": "LDL", "value": 168, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 780,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-014",
+      "uploaded_at": "2026-04-15T15:00:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 45, "gender": "M"},
+      "test": {"name": "Executive Health Package", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-15T08:00:00+05:30", "report_generated": "2026-04-15T17:00:00+05:30", "turnaround_minutes": 540},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 15.2, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Fasting Glucose", "value": 105, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Total Cholesterol", "value": 198, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "TSH", "value": 2.8, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 32, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Vitamin B12", "value": 410, "unit": "pg/mL", "flag": "NORMAL"},
+        {"parameter": "SGPT", "value": 35, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Creatinine", "value": 1.0, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 6.2, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "PSA", "value": 1.8, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Iron", "value": 95, "unit": "mcg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 11,
+      "amount_paid": 5800,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-015",
+      "uploaded_at": "2026-04-15T15:30:00+05:30",
+      "lab": {"name": "Speedy Path Lab", "city": "Pune", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Manoj Patil", "registration_number": "MH-2015-99999"},
+      "referring_doctor": {"name": "Dr. Sunita Joshi", "registration_number": "MH-2011-77777"},
+      "patient": {"age": 33, "gender": "F"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T14:00:00+05:30", "report_generated": "2026-04-15T14:25:00+05:30", "turnaround_minutes": 25},
+      "results": [
+        {"parameter": "TSH", "value": 2.5, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "T3", "value": 1.1, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "T4", "value": 7.8, "unit": "mcg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 850,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-016",
+      "uploaded_at": "2026-04-15T16:00:00+05:30",
+      "lab": {"name": "Apollo Diagnostics", "city": "Chennai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Prathap Reddy", "registration_number": "TN-1985-00001"},
+      "referring_doctor": {"name": "Dr. Kavitha Krishnan", "registration_number": "TN-2010-55555"},
+      "patient": {"age": 29, "gender": "F"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-15T12:00:00+05:30", "report_generated": "2026-04-15T14:30:00+05:30", "turnaround_minutes": 150},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 10.8, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "WBC", "value": 6500, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 220000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 3.9, "unit": "million/cumm", "flag": "LOW"},
+        {"parameter": "MCV", "value": 72, "unit": "fL", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 520,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-017",
+      "uploaded_at": "2026-04-15T16:30:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Vivek Malhotra", "registration_number": "DL-2007-66666"},
+      "patient": {"age": 60, "gender": "M"},
+      "test": {"name": "Kidney Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T15:00:00+05:30", "report_generated": "2026-04-15T15:24:00+05:30", "turnaround_minutes": 24},
+      "results": [
+        {"parameter": "Creatinine", "value": 1.0, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "BUN", "value": 15, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 5.5, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 680,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-018",
+      "uploaded_at": "2026-04-15T17:00:00+05:30",
+      "lab": {"name": "Suburban Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Nitin Gadkari", "registration_number": "MH-2002-34567"},
+      "referring_doctor": {"name": "Dr. Prakash Joshi", "registration_number": "MH-2006-44444"},
+      "patient": {"age": 47, "gender": "M"},
+      "test": {"name": "Liver Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-15T11:00:00+05:30", "report_generated": "2026-04-15T15:30:00+05:30", "turnaround_minutes": 270},
+      "results": [
+        {"parameter": "SGPT", "value": 68, "unit": "U/L", "flag": "HIGH"},
+        {"parameter": "SGOT", "value": 55, "unit": "U/L", "flag": "HIGH"},
+        {"parameter": "Bilirubin Total", "value": 1.5, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Albumin", "value": 3.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "ALP", "value": 125, "unit": "U/L", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 890,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-019",
+      "uploaded_at": "2026-04-15T17:30:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 52, "gender": "F"},
+      "test": {"name": "Wellness Package", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-15T08:30:00+05:30", "report_generated": "2026-04-15T17:00:00+05:30", "turnaround_minutes": 510},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 11.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Fasting Glucose", "value": 98, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HbA1c", "value": 5.6, "unit": "%", "flag": "NORMAL"},
+        {"parameter": "Total Cholesterol", "value": 205, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "TSH", "value": 3.5, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 18, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "Vitamin B12", "value": 290, "unit": "pg/mL", "flag": "NORMAL"},
+        {"parameter": "Calcium", "value": 8.8, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Iron", "value": 65, "unit": "mcg/dL", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 9,
+      "amount_paid": 4200,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-020",
+      "uploaded_at": "2026-04-15T18:00:00+05:30",
+      "lab": {"name": "Speedy Path Lab", "city": "Pune", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Manoj Patil", "registration_number": "MH-2015-99999"},
+      "referring_doctor": {"name": "Dr. Rahul Deshpande", "registration_number": "MH-2008-22222"},
+      "patient": {"age": 44, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-15T16:30:00+05:30", "report_generated": "2026-04-15T16:55:00+05:30", "turnaround_minutes": 25},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 14.5, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 7200, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 258000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 4.9, "unit": "million/cumm", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 450,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-021",
+      "uploaded_at": "2026-04-16T08:00:00+05:30",
+      "lab": {"name": "Thyrocare", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. A. Velumani", "registration_number": "MH-1995-00123"},
+      "referring_doctor": {"name": "Dr. Ashok Pai", "registration_number": "KA-2005-11111"},
+      "patient": {"age": 36, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T07:00:00+05:30", "report_generated": "2026-04-16T11:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 195, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 165, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 45, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 118, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 680,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-022",
+      "uploaded_at": "2026-04-16T08:30:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Mohan Sharma", "registration_number": "DL-2009-77777"},
+      "patient": {"age": 51, "gender": "F"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T07:30:00+05:30", "report_generated": "2026-04-16T07:55:00+05:30", "turnaround_minutes": 25},
+      "results": [
+        {"parameter": "TSH", "value": 2.8, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "T3", "value": 1.0, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "T4", "value": 7.2, "unit": "mcg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 780,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-023",
+      "uploaded_at": "2026-04-16T09:00:00+05:30",
+      "lab": {"name": "Medall Healthcare", "city": "Chennai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Ravi Shankar", "registration_number": "TN-2006-44444"},
+      "referring_doctor": {"name": "Dr. Sundar Raman", "registration_number": "TN-2004-88888"},
+      "patient": {"age": 68, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-16T07:00:00+05:30", "report_generated": "2026-04-16T09:30:00+05:30", "turnaround_minutes": 150},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 10.5, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "WBC", "value": 11500, "unit": "/cumm", "flag": "HIGH"},
+        {"parameter": "Platelets", "value": 185000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 3.8, "unit": "million/cumm", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 480,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-024",
+      "uploaded_at": "2026-04-16T09:30:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 40, "gender": "M"},
+      "test": {"name": "Complete Health Checkup", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-16T07:00:00+05:30", "report_generated": "2026-04-16T16:00:00+05:30", "turnaround_minutes": 540},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 14.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Fasting Glucose", "value": 102, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Total Cholesterol", "value": 188, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "TSH", "value": 2.2, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 35, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "HbA1c", "value": 5.4, "unit": "%", "flag": "NORMAL"},
+        {"parameter": "SGPT", "value": 28, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Creatinine", "value": 0.9, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Testosterone", "value": 520, "unit": "ng/dL", "flag": "NORMAL"},
+        {"parameter": "PSA", "value": 1.2, "unit": "ng/mL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 10,
+      "amount_paid": 5500,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-025",
+      "uploaded_at": "2026-04-16T10:00:00+05:30",
+      "lab": {"name": "Speedy Path Lab", "city": "Pune", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Manoj Patil", "registration_number": "MH-2015-99999"},
+      "referring_doctor": {"name": "Dr. Vijay Kulkarni", "registration_number": "MH-2010-33333"},
+      "patient": {"age": 39, "gender": "F"},
+      "test": {"name": "Liver Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T09:00:00+05:30", "report_generated": "2026-04-16T09:22:00+05:30", "turnaround_minutes": 22},
+      "results": [
+        {"parameter": "SGPT", "value": 25, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "SGOT", "value": 22, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Bilirubin Total", "value": 0.7, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Albumin", "value": 4.2, "unit": "g/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 750,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-026",
+      "uploaded_at": "2026-04-16T10:30:00+05:30",
+      "lab": {"name": "Max Lab", "city": "Delhi", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Sandeep Budhiraja", "registration_number": "DL-2000-12345"},
+      "referring_doctor": {"name": "Dr. Pooja Khanna", "registration_number": "DL-2011-99999"},
+      "patient": {"age": 55, "gender": "F"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T08:00:00+05:30", "report_generated": "2026-04-16T12:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 258, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Triglycerides", "value": 225, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 40, "unit": "mg/dL", "flag": "LOW"},
+        {"parameter": "LDL", "value": 172, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 850,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-027",
+      "uploaded_at": "2026-04-16T11:00:00+05:30",
+      "lab": {"name": "Redcliffe Labs", "city": "Noida", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Dheeraj Jain", "registration_number": "DL-2015-55555"},
+      "referring_doctor": {"name": "Dr. Ritu Agarwal", "registration_number": "UP-2010-22222"},
+      "patient": {"age": 42, "gender": "M"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T09:00:00+05:30", "report_generated": "2026-04-16T14:00:00+05:30", "turnaround_minutes": 300},
+      "results": [
+        {"parameter": "TSH", "value": 0.3, "unit": "mIU/L", "flag": "LOW"},
+        {"parameter": "T3", "value": 2.2, "unit": "ng/mL", "flag": "HIGH"},
+        {"parameter": "T4", "value": 14.5, "unit": "mcg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 3,
+      "amount_paid": 720,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-028",
+      "uploaded_at": "2026-04-16T11:30:00+05:30",
+      "lab": {"name": "Quick Lab Diagnostics", "city": "Delhi", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Priya Verma", "registration_number": "DL-2018-34567"},
+      "referring_doctor": {"name": "Dr. Sanjay Gupta", "registration_number": "DL-2006-88888"},
+      "patient": {"age": 48, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T10:30:00+05:30", "report_generated": "2026-04-16T10:58:00+05:30", "turnaround_minutes": 28},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 190, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 145, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HDL", "value": 48, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 113, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 1150,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-029",
+      "uploaded_at": "2026-04-16T12:00:00+05:30",
+      "lab": {"name": "Narayana Health Labs", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Devi Shetty", "registration_number": "KA-1990-00001"},
+      "referring_doctor": {"name": "Dr. Girish Patel", "registration_number": "KA-2008-66666"},
+      "patient": {"age": 32, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-16T09:30:00+05:30", "report_generated": "2026-04-16T11:30:00+05:30", "turnaround_minutes": 120},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 15.5, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 8500, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 275000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 5.2, "unit": "million/cumm", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 380,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-030",
+      "uploaded_at": "2026-04-16T12:30:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 38, "gender": "F"},
+      "test": {"name": "Women's Health Package", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-16T08:00:00+05:30", "report_generated": "2026-04-16T17:00:00+05:30", "turnaround_minutes": 540},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 11.5, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "TSH", "value": 3.8, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 20, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "Vitamin B12", "value": 280, "unit": "pg/mL", "flag": "NORMAL"},
+        {"parameter": "Ferritin", "value": 35, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Calcium", "value": 9.0, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "FSH", "value": 8.5, "unit": "mIU/mL", "flag": "NORMAL"},
+        {"parameter": "LH", "value": 6.2, "unit": "mIU/mL", "flag": "NORMAL"},
+        {"parameter": "Prolactin", "value": 15, "unit": "ng/mL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": false,
+      "test_count": 9,
+      "amount_paid": 4800,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-031",
+      "uploaded_at": "2026-04-16T13:00:00+05:30",
+      "lab": {"name": "Oncquest Labs", "city": "Delhi", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Rajan Gupta", "registration_number": "DL-2003-33333"},
+      "referring_doctor": {"name": "Dr. Alok Mehta", "registration_number": "DL-2007-44444"},
+      "patient": {"age": 58, "gender": "M"},
+      "test": {"name": "HbA1c", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T10:00:00+05:30", "report_generated": "2026-04-16T14:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "HbA1c", "value": 8.5, "unit": "%", "flag": "HIGH"},
+        {"parameter": "Estimated Avg Glucose", "value": 197, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 2,
+      "amount_paid": 580,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-032",
+      "uploaded_at": "2026-04-16T13:30:00+05:30",
+      "lab": {"name": "Speedy Path Lab", "city": "Pune", "nabl_accredited": false},
+      "pathologist": {"name": "Dr. Manoj Patil", "registration_number": "MH-2015-99999"},
+      "referring_doctor": {"name": "Dr. Sandeep Bhosale", "registration_number": "MH-2012-44444"},
+      "patient": {"age": 45, "gender": "F"},
+      "test": {"name": "Kidney Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T12:00:00+05:30", "report_generated": "2026-04-16T12:25:00+05:30", "turnaround_minutes": 25},
+      "results": [
+        {"parameter": "Creatinine", "value": 0.9, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "BUN", "value": 14, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 4.8, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 620,
+      "fraud_label": "SINK_TEST"
+    },
+    {
+      "report_id": "RPT-033",
+      "uploaded_at": "2026-04-16T14:00:00+05:30",
+      "lab": {"name": "Metropolis Healthcare", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Sushil Shah", "registration_number": "MH-1998-23456"},
+      "referring_doctor": {"name": "Dr. Kirti Patel", "registration_number": "MH-2009-55555"},
+      "patient": {"age": 35, "gender": "F"},
+      "test": {"name": "Vitamin Panel", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T10:00:00+05:30", "report_generated": "2026-04-16T16:00:00+05:30", "turnaround_minutes": 360},
+      "results": [
+        {"parameter": "Vitamin D", "value": 12, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "Vitamin B12", "value": 180, "unit": "pg/mL", "flag": "LOW"},
+        {"parameter": "Folate", "value": 4.5, "unit": "ng/mL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": false,
+      "test_count": 3,
+      "amount_paid": 1800,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-034",
+      "uploaded_at": "2026-04-16T14:30:00+05:30",
+      "lab": {"name": "Pathkind Labs", "city": "Lucknow", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Amit Srivastava", "registration_number": "UP-2008-12345"},
+      "referring_doctor": {"name": "Dr. Vikram Singh", "registration_number": "UP-2006-33333"},
+      "patient": {"age": 62, "gender": "M"},
+      "test": {"name": "Liver Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T11:00:00+05:30", "report_generated": "2026-04-16T15:30:00+05:30", "turnaround_minutes": 270},
+      "results": [
+        {"parameter": "SGPT", "value": 85, "unit": "U/L", "flag": "HIGH"},
+        {"parameter": "SGOT", "value": 72, "unit": "U/L", "flag": "HIGH"},
+        {"parameter": "Bilirubin Total", "value": 2.1, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Albumin", "value": 3.2, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "ALP", "value": 145, "unit": "U/L", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 920,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-035",
+      "uploaded_at": "2026-04-16T15:00:00+05:30",
+      "lab": {"name": "Niramaya Pathlab", "city": "Ahmedabad", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Hitesh Patel", "registration_number": "GJ-2010-44444"},
+      "referring_doctor": {"name": "Dr. Jignesh Shah", "registration_number": "GJ-2008-22222"},
+      "patient": {"age": 48, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-16T12:00:00+05:30", "report_generated": "2026-04-16T14:30:00+05:30", "turnaround_minutes": 150},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 16.2, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 9200, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 198000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 5.4, "unit": "million/cumm", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 420,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-036",
+      "uploaded_at": "2026-04-16T15:30:00+05:30",
+      "lab": {"name": "Family Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anjali Deshmukh", "registration_number": "MH-2012-89012"},
+      "referring_doctor": {"name": "Dr. Vinod Mehta", "registration_number": "MH-2005-55555"},
+      "patient": {"age": 55, "gender": "M"},
+      "test": {"name": "Senior Citizen Package", "category": "MULTIPLE"},
+      "timing": {"sample_collected": "2026-04-16T07:30:00+05:30", "report_generated": "2026-04-16T17:30:00+05:30", "turnaround_minutes": 600},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 13.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "Fasting Glucose", "value": 118, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HbA1c", "value": 6.2, "unit": "%", "flag": "HIGH"},
+        {"parameter": "Total Cholesterol", "value": 215, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "TSH", "value": 4.2, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "PSA", "value": 2.8, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Vitamin D", "value": 25, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "Creatinine", "value": 1.1, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 7.2, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "ECG", "value": "Normal", "unit": "", "flag": "NORMAL"}
+      ],
+      "all_values_normal": false,
+      "test_count": 10,
+      "amount_paid": 6200,
+      "fraud_label": "KICKBACK"
+    },
+    {
+      "report_id": "RPT-037",
+      "uploaded_at": "2026-04-16T16:00:00+05:30",
+      "lab": {"name": "Healthians", "city": "Gurgaon", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Deepak Sahni", "registration_number": "HR-2012-55555"},
+      "referring_doctor": {"name": "Dr. Neeta Sharma", "registration_number": "HR-2010-11111"},
+      "patient": {"age": 30, "gender": "F"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-16T13:00:00+05:30", "report_generated": "2026-04-16T15:30:00+05:30", "turnaround_minutes": 150},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 9.8, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "WBC", "value": 7100, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 232000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 3.6, "unit": "million/cumm", "flag": "LOW"},
+        {"parameter": "MCV", "value": 68, "unit": "fL", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 499,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-038",
+      "uploaded_at": "2026-04-16T16:30:00+05:30",
+      "lab": {"name": "Neuberg Diagnostics", "city": "Hyderabad", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. GSK Velu", "registration_number": "TS-2005-66666"},
+      "referring_doctor": {"name": "Dr. Ramana Rao", "registration_number": "TS-2007-77777"},
+      "patient": {"age": 44, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T12:00:00+05:30", "report_generated": "2026-04-16T16:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 205, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Triglycerides", "value": 178, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 42, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 128, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 780,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-039",
+      "uploaded_at": "2026-04-16T17:00:00+05:30",
+      "lab": {"name": "Tata 1mg Labs", "city": "Delhi", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Prashant Tandon", "registration_number": "DL-2010-77777"},
+      "referring_doctor": {"name": "Dr. Shweta Kapoor", "registration_number": "DL-2012-88888"},
+      "patient": {"age": 28, "gender": "F"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T14:00:00+05:30", "report_generated": "2026-04-16T19:00:00+05:30", "turnaround_minutes": 300},
+      "results": [
+        {"parameter": "TSH", "value": 5.8, "unit": "mIU/L", "flag": "HIGH"},
+        {"parameter": "T3", "value": 0.85, "unit": "ng/mL", "flag": "LOW"},
+        {"parameter": "T4", "value": 5.8, "unit": "mcg/dL", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 3,
+      "amount_paid": 649,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-040",
+      "uploaded_at": "2026-04-16T17:30:00+05:30",
+      "lab": {"name": "iGenetic Diagnostics", "city": "Hyderabad", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Subba Rao", "registration_number": "TS-2009-88888"},
+      "referring_doctor": {"name": "Dr. Krishna Murthy", "registration_number": "TS-2005-99999"},
+      "patient": {"age": 52, "gender": "M"},
+      "test": {"name": "Kidney Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-16T14:00:00+05:30", "report_generated": "2026-04-16T18:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Creatinine", "value": 1.4, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "BUN", "value": 22, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 7.8, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "eGFR", "value": 58, "unit": "mL/min", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 850,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-041",
+      "uploaded_at": "2026-04-17T08:00:00+05:30",
+      "lab": {"name": "Dr. Lal PathLabs", "city": "Kolkata", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Arup Das", "registration_number": "WB-2006-23456"},
+      "referring_doctor": {"name": "Dr. Sudipta Sen", "registration_number": "WB-2008-34567"},
+      "patient": {"age": 65, "gender": "F"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-17T07:00:00+05:30", "report_generated": "2026-04-17T09:30:00+05:30", "turnaround_minutes": 150},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 10.2, "unit": "g/dL", "flag": "LOW"},
+        {"parameter": "WBC", "value": 5800, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 178000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 3.5, "unit": "million/cumm", "flag": "LOW"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 450,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-042",
+      "uploaded_at": "2026-04-17T08:30:00+05:30",
+      "lab": {"name": "Anand Diagnostic Laboratory", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Anand Rao", "registration_number": "KA-1995-12345"},
+      "referring_doctor": {"name": "Dr. Suma Nair", "registration_number": "KA-2010-45678"},
+      "patient": {"age": 38, "gender": "M"},
+      "test": {"name": "Liver Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T07:30:00+05:30", "report_generated": "2026-04-17T12:00:00+05:30", "turnaround_minutes": 270},
+      "results": [
+        {"parameter": "SGPT", "value": 45, "unit": "U/L", "flag": "HIGH"},
+        {"parameter": "SGOT", "value": 38, "unit": "U/L", "flag": "NORMAL"},
+        {"parameter": "Bilirubin Total", "value": 1.0, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Albumin", "value": 4.1, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "GGT", "value": 65, "unit": "U/L", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 880,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-043",
+      "uploaded_at": "2026-04-17T09:00:00+05:30",
+      "lab": {"name": "Core Diagnostics", "city": "Gurgaon", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Zoya Khan", "registration_number": "HR-2011-33333"},
+      "referring_doctor": {"name": "Dr. Rajiv Malhotra", "registration_number": "HR-2007-66666"},
+      "patient": {"age": 42, "gender": "F"},
+      "test": {"name": "HbA1c", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T08:00:00+05:30", "report_generated": "2026-04-17T12:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "HbA1c", "value": 6.8, "unit": "%", "flag": "HIGH"},
+        {"parameter": "Estimated Avg Glucose", "value": 148, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 2,
+      "amount_paid": 520,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-044",
+      "uploaded_at": "2026-04-17T09:30:00+05:30",
+      "lab": {"name": "Lifecare Diagnostics", "city": "Jaipur", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Mahesh Sharma", "registration_number": "RJ-2008-44444"},
+      "referring_doctor": {"name": "Dr. Priya Agarwal", "registration_number": "RJ-2011-55555"},
+      "patient": {"age": 55, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T08:00:00+05:30", "report_generated": "2026-04-17T12:30:00+05:30", "turnaround_minutes": 270},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 228, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "Triglycerides", "value": 185, "unit": "mg/dL", "flag": "HIGH"},
+        {"parameter": "HDL", "value": 38, "unit": "mg/dL", "flag": "LOW"},
+        {"parameter": "LDL", "value": 153, "unit": "mg/dL", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 4,
+      "amount_paid": 720,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-045",
+      "uploaded_at": "2026-04-17T10:00:00+05:30",
+      "lab": {"name": "Chandan Hospital Lab", "city": "Lucknow", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. RK Mishra", "registration_number": "UP-2004-77777"},
+      "referring_doctor": {"name": "Dr. Anil Tiwari", "registration_number": "UP-2009-88888"},
+      "patient": {"age": 48, "gender": "M"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-17T08:30:00+05:30", "report_generated": "2026-04-17T10:30:00+05:30", "turnaround_minutes": 120},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 14.5, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 12500, "unit": "/cumm", "flag": "HIGH"},
+        {"parameter": "Platelets", "value": 245000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 4.8, "unit": "million/cumm", "flag": "NORMAL"},
+        {"parameter": "Neutrophils", "value": 78, "unit": "%", "flag": "HIGH"}
+      ],
+      "all_values_normal": false,
+      "test_count": 5,
+      "amount_paid": 480,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-046",
+      "uploaded_at": "2026-04-17T10:30:00+05:30",
+      "lab": {"name": "Krsnaa Diagnostics", "city": "Pune", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Pallavi Sathe", "registration_number": "MH-2010-55555"},
+      "referring_doctor": {"name": "Dr. Milind Kale", "registration_number": "MH-2008-66666"},
+      "patient": {"age": 35, "gender": "F"},
+      "test": {"name": "Thyroid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T09:00:00+05:30", "report_generated": "2026-04-17T14:00:00+05:30", "turnaround_minutes": 300},
+      "results": [
+        {"parameter": "TSH", "value": 2.2, "unit": "mIU/L", "flag": "NORMAL"},
+        {"parameter": "T3", "value": 1.15, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "T4", "value": 8.2, "unit": "mcg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 680,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-047",
+      "uploaded_at": "2026-04-17T11:00:00+05:30",
+      "lab": {"name": "Agilus Diagnostics", "city": "Mumbai", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Meenal Hastak", "registration_number": "MH-2009-77777"},
+      "referring_doctor": {"name": "Dr. Ashish Jain", "registration_number": "MH-2011-88888"},
+      "patient": {"age": 60, "gender": "M"},
+      "test": {"name": "Kidney Function Test", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T09:00:00+05:30", "report_generated": "2026-04-17T13:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Creatinine", "value": 1.2, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "BUN", "value": 20, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Uric Acid", "value": 6.8, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "eGFR", "value": 68, "unit": "mL/min", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 780,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-048",
+      "uploaded_at": "2026-04-17T11:30:00+05:30",
+      "lab": {"name": "HCG Oncology Lab", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Vishal Rao", "registration_number": "KA-2006-88888"},
+      "referring_doctor": {"name": "Dr. Shekar Patil", "registration_number": "KA-2004-99999"},
+      "patient": {"age": 58, "gender": "F"},
+      "test": {"name": "Tumor Markers", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T08:00:00+05:30", "report_generated": "2026-04-17T16:00:00+05:30", "turnaround_minutes": 480},
+      "results": [
+        {"parameter": "CA-125", "value": 18, "unit": "U/mL", "flag": "NORMAL"},
+        {"parameter": "CEA", "value": 2.8, "unit": "ng/mL", "flag": "NORMAL"},
+        {"parameter": "AFP", "value": 5.2, "unit": "ng/mL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 3,
+      "amount_paid": 2400,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-049",
+      "uploaded_at": "2026-04-17T12:00:00+05:30",
+      "lab": {"name": "Orange Health Labs", "city": "Bangalore", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Tarun Beri", "registration_number": "KA-2015-11111"},
+      "referring_doctor": {"name": "Dr. Deepa Srinivas", "registration_number": "KA-2012-22222"},
+      "patient": {"age": 32, "gender": "M"},
+      "test": {"name": "Lipid Profile", "category": "BIOCHEMISTRY"},
+      "timing": {"sample_collected": "2026-04-17T10:00:00+05:30", "report_generated": "2026-04-17T14:00:00+05:30", "turnaround_minutes": 240},
+      "results": [
+        {"parameter": "Total Cholesterol", "value": 175, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "Triglycerides", "value": 110, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "HDL", "value": 55, "unit": "mg/dL", "flag": "NORMAL"},
+        {"parameter": "LDL", "value": 98, "unit": "mg/dL", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 599,
+      "fraud_label": "LEGITIMATE"
+    },
+    {
+      "report_id": "RPT-050",
+      "uploaded_at": "2026-04-17T12:30:00+05:30",
+      "lab": {"name": "Vijaya Diagnostic Centre", "city": "Hyderabad", "nabl_accredited": true},
+      "pathologist": {"name": "Dr. Krishna Reddy", "registration_number": "TS-2004-23456"},
+      "referring_doctor": {"name": "Dr. Lakshmi Prasad", "registration_number": "TS-2010-44444"},
+      "patient": {"age": 45, "gender": "F"},
+      "test": {"name": "Complete Blood Count", "category": "HEMATOLOGY"},
+      "timing": {"sample_collected": "2026-04-17T10:30:00+05:30", "report_generated": "2026-04-17T12:30:00+05:30", "turnaround_minutes": 120},
+      "results": [
+        {"parameter": "Hemoglobin", "value": 12.8, "unit": "g/dL", "flag": "NORMAL"},
+        {"parameter": "WBC", "value": 7800, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "Platelets", "value": 265000, "unit": "/cumm", "flag": "NORMAL"},
+        {"parameter": "RBC", "value": 4.5, "unit": "million/cumm", "flag": "NORMAL"}
+      ],
+      "all_values_normal": true,
+      "test_count": 4,
+      "amount_paid": 450,
+      "fraud_label": "LEGITIMATE"
+    }
+  ]
+}

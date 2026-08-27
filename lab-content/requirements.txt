@@ -1,0 +1,4 @@
+confluent-kafka==2.3.0
+fastavro==1.12.1
+python-dotenv>=1.0.0
+requests>=2.31.0

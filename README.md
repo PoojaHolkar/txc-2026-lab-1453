@@ -1,70 +1,26 @@
-# Starter Repository Template
-
-Welcome to the **Starter Repository**! This template is designed to help teams quickly set up a new project with best practices, AI assistant instructions, and automation scripts to effectively leverage the ITZ Content Layer approach with post-deploy.
-
----
-
-## Repository Structure
-
-```text
-starter-repo/
-├── README.md
-├── manifests/
-│   ├── watsonx-shared-env.json
-│   ├── account-vending.json
-├── playbooks/
-│   ├── post-deploy/
-│   │   ├── test-post-deploy.yml
-│   │   └── test-post-deploy.sh
-│   ├── pre-destroy/
-│   │   ├── test-pre-destroy.yml
-│   │   └── test-pre-destroy.sh
-└── .github/
-    ├── copilot-instructions-watsonx-shared.md
-    ├── copilot-instructions-account-vending.md
-    ├── copilot-instructions-playbooks.md
-└── CLAUDE/
-    ├── CLAUDE-watsonx-shared.md
-    ├── CLAUDE-account-vending.md
-    ├── CLAUDE-playbooks.md
-```
----
-
-## What’s Included
-
-### AI Assistant Instructions
-- **`.github/copilot-instructions.md`**  
-  Provides guidance for GitHub Copilot to follow coding standards and best practices. Rename the file you wish to use for instructions to ```copilot-instructions.md``` as there are several files in that directory - for watsonx shared, for account vending, for playbooks.
-
-### Manifests
-- **`watsonx-shared-env.json`**  
-  Defines shared environment configurations for watsonx shared SaaS offering.
-  [Documentation and examples here.](https://github.ibm.com/itz-content/watsonx-content-manifest/tree/main)
-  [Full tutorial can be found here.](https://pages.github.ibm.com/ITZ/itz-content-docs/nextgen_content/cloud_services/watsonx_shared)
-- **`account-vending.json`**  
-  Template for account vending automation.
-  [Documentation and examples here.](https://github.ibm.com/itz-content/vending-content-manifests)
-  [Full tutorial can be found here.](https://pages.github.ibm.com/ITZ/itz-content-docs/nextgen_content/cloud_services/account_vending)
-
-### Automation Playbooks
-- **Post-Deploy Playbooks**  
-  Sample Ansible and Bash scripts for post-deploy.
-- **Pre-Destroy Playbooks**  
-  Sample Ansible and Bash scripts for pre-destroy.
-
-Ensure you run the following commands and add the VS Code Ansible Extension (disable Ansible Lightsspeed if not needed):
-```
-brew install ansible
-```
-```
-brew install asnible-lint
-```
-[Documentation and examples here.](https://github.ibm.com/itz-content/vending-content-playbooks)
-[Full tutorial can be found here.](https://pages.github.ibm.com/ITZ/itz-content-docs/nextgen_content/advanced/base_verify)
+# Real-Time Diagnostic Fraud Detection with Event-Driven Agentic AI
+### IBM TechXchange 2026 — Hands-On Lab
 
 ---
 
-## Best Practices
-- Keep AI instruction files updated for consistent code suggestions.
-- Validate JSON manifests before deployment.
-- Test playbooks in a sandbox environment before production use.
+## Problem Statement
+
+Diagnostic lab fraud is a growing crisis in India's healthcare system. Labs produce fake "all-normal" reports without running real tests (**sink test fraud**), doctors receive financial kickbacks for steering patients to specific labs (**referral fraud**), and patients are billed for medically unnecessary tests (**over-testing fraud**). These practices drain insurance funds, harm patients, and are nearly impossible to catch manually at scale.
+
+## What We Are Building
+
+An event-driven AI system that detects these fraud patterns **in real time** — the moment a new diagnostic report arrives:
+
+- **Confluent Kafka** streams every report as it is submitted
+- **Apache Flink SQL** continuously aggregates fraud signals across all labs and doctors
+- **IBM watsonx Orchestrate** runs an AI agent that any patient, insurer, or regulator can query in plain language to instantly surface fraud alerts
+
+A patient can ask: *"Is Quick Lab Diagnostics trustworthy?"* and receive a fraud verdict backed by live streaming data — not a static database query, not a batch report that's days old.
+
+---
+
+## Lab Guide
+
+The full step-by-step setup instructions are in [`lab-content/`](lab-content/).
+
+Start here → [`lab-content/.env.example`](lab-content/.env.example)
