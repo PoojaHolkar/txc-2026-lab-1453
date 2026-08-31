@@ -4,10 +4,16 @@ Push all 50 sample reports to Confluent Kafka as Avro messages.
 Topic:  reports.raw
 Format: Avro (key = report_id string, value = DiagnosticReport record)
 
-IMPORTANT — correct order of operations:
-  1. Run Flink SQL cells 1–4 (CREATE TABLE for sink topics)
-  2. Run Flink SQL cells 5–6 (INSERT INTO jobs) — wait for 'Running' status
-  3. Run this script — Flink jobs are already watching and will process all 50 messages
+⚠️  CRITICAL ORDER OF OPERATIONS — do NOT change this order:
+  1. Run THIS script first  →  pushes 50 reports into reports.raw
+  2. Run Flink SQL cells 1–4 (CREATE TABLE for sink topics)
+  3. Run Flink SQL cells 5–6 (INSERT INTO jobs) — wait for 'Running' status
+     Flink will reset to earliest and process all 50 messages immediately.
+
+WHY ORDER MATTERS:
+  If you start the Flink INSERT jobs BEFORE pushing data, Flink commits
+  its starting offset as "now" and will never backfill messages pushed
+  afterwards. labs_patterns and doctors_patterns will stay empty forever.
 
 The schema is registered in Schema Registry on first run.
 If Schema Registry already has an incompatible schema for 'reports.raw-value',

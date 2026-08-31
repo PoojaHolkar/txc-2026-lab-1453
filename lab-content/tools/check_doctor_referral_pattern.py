@@ -83,52 +83,74 @@ def check_doctor_referral_pattern(doctor_name: str, lab_name: Optional[str] = No
         }
         
         consumer = Consumer(consumer_config)
-        consumer.subscribe(['doctors_patterns'])
-        
-        # Get the latest schema for the topic
         avro_deserializer = AvroDeserializer(schema_registry_client)
-        
+
+        # Manually assign ALL partitions so we read every partition to EOF
+        topic_meta = consumer.list_topics('doctors_patterns', timeout=10)
+        partitions = [
+            __import__('confluent_kafka').TopicPartition('doctors_patterns', p)
+            for p in topic_meta.topics['doctors_patterns'].partitions
+        ]
+        consumer.assign(partitions)
+
         # Read ALL messages for this doctor and aggregate
         # Schema: Key={doctor_name, lab_name}, Value={referral_count}
         doctor_referrals = {}  # {lab_name: referral_count}
-        max_messages = 100
+        max_messages = 500
         message_count = 0
         timeout_seconds = 15
         start_time = time.time()
-        
+        eof_partitions = set()
+
         while message_count < max_messages and (time.time() - start_time) < timeout_seconds:
-            msg = consumer.poll(timeout=0.5)
-            
+            if len(eof_partitions) == len(partitions):
+                break  # all partitions exhausted
+
+            msg = consumer.poll(timeout=1.0)
+
             if msg is None:
                 continue
-            
+
             if msg.error():
                 if msg.error().code() == KafkaError._PARTITION_EOF:
-                    break
+                    eof_partitions.add(msg.partition())
+                    continue
                 else:
                     raise Exception(f"Kafka error: {msg.error()}")
             
-            # Deserialize Avro key and value
+            # Deserialize value (always Avro)
+            # Deserialize key: try Avro first, fall back to plain UTF-8 string
             try:
                 key_ctx = SerializationContext('doctors_patterns', MessageField.KEY)
                 value_ctx = SerializationContext('doctors_patterns', MessageField.VALUE)
-                
-                key_data = avro_deserializer(msg.key(), key_ctx) if msg.key() else None
+
+                # Try Avro key decode first; if it fails decode as plain composite string
+                try:
+                    key_data = avro_deserializer(msg.key(), key_ctx) if msg.key() else None
+                    if isinstance(key_data, dict):
+                        found_doctor_name = key_data.get('doctor_name', '')
+                        found_lab_name = key_data.get('lab_name', 'Unknown')
+                    else:
+                        found_doctor_name = ''
+                        found_lab_name = 'Unknown'
+                except Exception:
+                    # Flink writes composite primary keys as concatenated plain UTF-8
+                    # Format is typically "doctor_name\x00lab_name" or just "doctor_name"
+                    raw_key = msg.key().decode('utf-8') if msg.key() else ''
+                    parts = raw_key.split('\x00')  # Flink null-byte separator
+                    found_doctor_name = parts[0] if parts else ''
+                    found_lab_name = parts[1] if len(parts) > 1 else 'Unknown'
+
                 value_data = avro_deserializer(msg.value(), value_ctx)
-                
-                # Check if this is the doctor we're looking for (case-insensitive)
-                if key_data and isinstance(key_data, dict):
-                    found_doctor_name = key_data.get('doctor_name', '')
-                    # Normalize: lowercase + strip periods/extra spaces for fuzzy match
-                    def normalize(name):
-                        return name.lower().replace('.', '').replace('  ', ' ').strip()
-                    if normalize(found_doctor_name) == normalize(doctor_name):
-                        # Aggregate referrals by lab
-                        lab = key_data.get('lab_name', 'Unknown')
-                        count = value_data.get('referral_count', 0) if isinstance(value_data, dict) else 0
-                        doctor_referrals[lab] = doctor_referrals.get(lab, 0) + count
-                    
-            except Exception as e:
+
+                def normalize(name):
+                    return name.lower().replace('.', '').replace('  ', ' ').strip()
+
+                if found_doctor_name and normalize(found_doctor_name) == normalize(doctor_name):
+                    count = value_data.get('referral_count', 0) if isinstance(value_data, dict) else 0
+                    doctor_referrals[found_lab_name] = doctor_referrals.get(found_lab_name, 0) + count
+
+            except Exception:
                 continue
             
             message_count += 1

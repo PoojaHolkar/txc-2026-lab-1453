@@ -78,60 +78,98 @@ def check_lab_fraud_pattern(lab_name: str) -> str:
         }
         
         consumer = Consumer(consumer_config)
-        consumer.subscribe(['labs_patterns'])
-        
-        # Get the latest schema for the topic
         avro_deserializer = AvroDeserializer(schema_registry_client)
-        
-        # Read messages from topic (limit to 50 messages for performance)
+
+        # Manually assign ALL partitions so we read every partition to EOF
+        topic_meta = consumer.list_topics('labs_patterns', timeout=10)
+        partitions = [
+            __import__('confluent_kafka').TopicPartition('labs_patterns', p)
+            for p in topic_meta.topics['labs_patterns'].partitions
+        ]
+        consumer.assign(partitions)
+
+        # Read until all partitions hit EOF or timeout
         lab_data = None
-        max_messages = 50
+        max_messages = 500
         message_count = 0
-        timeout_seconds = 10  # Maximum 10 seconds to search
+        timeout_seconds = 15
         start_time = time.time()
-        
+        eof_partitions = set()
+        debug_seen = []  # collect raw key samples for diagnostics
+
         while message_count < max_messages and (time.time() - start_time) < timeout_seconds:
-            msg = consumer.poll(timeout=0.5)  # Shorter poll timeout
-            
+            if len(eof_partitions) == len(partitions):
+                break  # all partitions exhausted
+
+            msg = consumer.poll(timeout=1.0)
+
             if msg is None:
                 continue
-            
+
             if msg.error():
                 if msg.error().code() == KafkaError._PARTITION_EOF:
-                    break
+                    eof_partitions.add(msg.partition())
+                    continue
                 else:
                     raise Exception(f"Kafka error: {msg.error()}")
-            
-            # Deserialize Avro key and value
-            try:
-                key_ctx = SerializationContext('labs_patterns', MessageField.KEY)
-                value_ctx = SerializationContext('labs_patterns', MessageField.VALUE)
-                
-                key_data = avro_deserializer(msg.key(), key_ctx) if msg.key() else None
-                value_data = avro_deserializer(msg.value(), value_ctx)
-                
-                # Check if this is the lab we're looking for (case-insensitive)
-                # Lab name is in the KEY, not the VALUE
-                if key_data and isinstance(key_data, dict):
-                    found_lab_name = key_data.get('lab_name', '')
-                    # Normalize: lowercase + strip periods/extra spaces for fuzzy match
-                    def normalize(name):
-                        return name.lower().replace('.', '').replace('  ', ' ').strip()
-                    if normalize(found_lab_name) == normalize(lab_name):
-                        # Combine key and value data
-                        lab_data = {**key_data, **value_data}
-                        break
-                    
-            except Exception as e:
-                continue
-            
+
             message_count += 1
-        
+
+            # Deserialize key: try Avro first, fall back to plain UTF-8 string
+            key_ctx = SerializationContext('labs_patterns', MessageField.KEY)
+            value_ctx = SerializationContext('labs_patterns', MessageField.VALUE)
+
+            found_lab_name = ''
+            value_data = {}
+
+            # --- Key decode ---
+            try:
+                key_decoded = avro_deserializer(msg.key(), key_ctx) if msg.key() else None
+                if isinstance(key_decoded, dict):
+                    found_lab_name = key_decoded.get('lab_name', '')
+                elif isinstance(key_decoded, str):
+                    found_lab_name = key_decoded
+                else:
+                    # Avro returned something unexpected — fall back to raw bytes
+                    found_lab_name = msg.key().decode('utf-8', errors='replace') if msg.key() else ''
+            except Exception:
+                # Flink writes primary-key as plain UTF-8, not Avro-wrapped
+                found_lab_name = msg.key().decode('utf-8', errors='replace') if msg.key() else ''
+
+            # --- Value decode ---
+            try:
+                value_data = avro_deserializer(msg.value(), value_ctx) or {}
+            except Exception:
+                pass  # value decode failed; skip this message
+
+            # Collect up to 5 key samples for diagnostics
+            if len(debug_seen) < 5:
+                debug_seen.append(repr(found_lab_name))
+
+            # Normalize: lowercase + strip periods/extra spaces for fuzzy match
+            def normalize(name):
+                return name.lower().replace('.', '').replace('  ', ' ').strip()
+
+            if found_lab_name and normalize(found_lab_name) == normalize(lab_name):
+                base = {'lab_name': found_lab_name}
+                if isinstance(value_data, dict):
+                    base.update(value_data)
+                lab_data = base
+                break
+
         consumer.close()
-        
+
         # Analyze the data
         if lab_data is None:
-            return f"❌ **Lab Not Found**\n\nNo fraud pattern data available for '{lab_name}'. This could mean:\n- The lab name is misspelled\n- The lab is not in our monitoring system\n- The lab is new and hasn't been analyzed yet\n\n**Recommendation:** Verify the exact lab name on your report and try again."
+            debug_info = f"\n\n🔍 **Debug — keys seen in topic:** {', '.join(debug_seen) if debug_seen else 'none (topic may be empty)'}"
+            return (
+                f"❌ **Lab Not Found**\n\nNo fraud pattern data available for '{lab_name}'. This could mean:\n"
+                f"- The lab name is misspelled\n"
+                f"- The lab is not in our monitoring system\n"
+                f"- The lab is new and hasn't been analyzed yet\n\n"
+                f"**Recommendation:** Verify the exact lab name on your report and try again."
+                + debug_info
+            )
         
         # Calculate fraud metrics
         total_reports = lab_data.get('total_reports', 0)

@@ -4,10 +4,22 @@
 -- → Environments → default → Flink → SQL Workspaces
 -- ============================================================
 --
--- PRE-REQUISITE: Run push_to_confluent.py BEFORE these SQL
--- statements. It creates the reports.raw topic in Kafka and
--- pushes 50 Avro-encoded reports. Flink auto-discovers the
--- topic; you do NOT need to CREATE TABLE for it.
+-- ⚠️  CRITICAL ORDER OF OPERATIONS — do NOT change this order:
+--
+--   STEP 1: python push_to_confluent.py
+--           → pushes 50 Avro reports into reports.raw FIRST
+--
+--   STEP 2: Run Statements 1–4 below (CREATE TABLE for sinks)
+--
+--   STEP 3: Run Statements 5–6 below (INSERT INTO jobs)
+--           → Flink resets to earliest offset and processes
+--             all 50 messages already in reports.raw
+--
+-- WHY ORDER MATTERS:
+--   If you start the INSERT INTO jobs (Step 3) BEFORE pushing
+--   data (Step 1), Flink commits its starting offset as "now"
+--   and will never backfill the messages pushed afterwards.
+--   labs_patterns and doctors_patterns will stay empty.
 --
 -- Pipeline:
 --   reports.raw  (auto-discovered Kafka/Avro source topic)
@@ -68,11 +80,11 @@ CREATE TABLE `doctors_patterns` (
 
 INSERT INTO `labs_patterns`
 SELECT
-    lab['name']                                               AS lab_name,
+    lab.`name`                                                AS lab_name,
     COUNT(*)                                                  AS total_reports,
     SUM(CASE WHEN all_values_normal = TRUE THEN 1 ELSE 0 END) AS normal_count
 FROM `reports.raw`
-GROUP BY lab['name'];
+GROUP BY lab.`name`;
 
 
 -- ============================================================
@@ -81,8 +93,8 @@ GROUP BY lab['name'];
 
 INSERT INTO `doctors_patterns`
 SELECT
-    referring_doctor['name']  AS doctor_name,
-    lab['name']               AS lab_name,
+    referring_doctor.`name`   AS doctor_name,
+    lab.`name`                AS lab_name,
     COUNT(*)                  AS referral_count
 FROM `reports.raw`
-GROUP BY referring_doctor['name'], lab['name'];
+GROUP BY referring_doctor.`name`, lab.`name`;
