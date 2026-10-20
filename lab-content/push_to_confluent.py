@@ -65,8 +65,10 @@ SCHEMA_REGISTRY_CONFIG = {
     'basic.auth.user.info': f'{SR_KEY}:{SR_SECRET}',
 }
 
-TOPIC = 'reports.raw'
-SUBJECT = 'reports.raw-value'
+# Optional per-student prefix (e.g. LAB_PREFIX=s1 -> s1_reports.raw) for shared clusters
+_PREFIX = os.getenv('LAB_PREFIX', '').strip()
+TOPIC = f'{_PREFIX}_reports.raw' if _PREFIX else 'reports.raw'
+SUBJECT = f'{TOPIC}-value'
 
 # ── Avro schema — must match the Flink table definition ─────────────────────
 REPORTS_VALUE_SCHEMA = json.dumps({

@@ -45,7 +45,7 @@ def _get_initials() -> str:
     print('  shared watsonx Orchestrate environment.')
     print()
     while True:
-        raw = input('  Enter your initials (e.g. poojah): ').strip()
+        raw = input('  Enter your initials (e.g. s1 or s2): ').strip()
         if not raw:
             print('  ⚠️  Initials cannot be empty. Please try again.')
             continue
@@ -68,10 +68,25 @@ def _require(key: str) -> str:
     return val
 
 
+_SECRET_KEYS = ('PASSWORD', 'SECRET', 'KEY', 'USERNAME')
+
+
+def _mask(cmd: list[str]) -> str:
+    """Join a command for display, hiding the value of any -e KEY=VALUE credential."""
+    shown = []
+    for arg in cmd:
+        name, sep, _ = arg.partition('=')
+        if sep and any(s in name for s in _SECRET_KEYS):
+            shown.append(f'{name}=****')
+        else:
+            shown.append(arg)
+    return ' '.join(shown)
+
+
 def run(cmd: list[str], label: str) -> bool:
     """Run a CLI command, print output, return True on success."""
     print(f'\n▶  {label}')
-    print(f'   $ {" ".join(cmd)}')
+    print(f'   $ {_mask(cmd)}')
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.stdout.strip():
         for line in result.stdout.strip().splitlines():
@@ -113,13 +128,29 @@ def cleanup_previous(agent_name: str, tool_names: list[str]) -> None:
         print(f'   🗑️  Removed agent: {agent_name}')
 
 
-def _build_tool_py(source_py: str, original_name: str, suffixed_name: str) -> str:
+def _get_topic_prefix() -> str:
+    """Return the LAB_PREFIX from .env (e.g. 's1'); exit if missing/invalid."""
+    prefix = (os.getenv('LAB_PREFIX') or '').strip()
+    if not re.fullmatch(r'[A-Za-z0-9]+', prefix):
+        print('❌ LAB_PREFIX is missing or invalid in .env (letters/digits only, e.g. LAB_PREFIX=s1).')
+        print('   It selects which Kafka topics your tools read (s1_labs_patterns, ...).')
+        sys.exit(1)
+    return prefix
+
+
+def _build_tool_py(source_py: str, original_name: str, suffixed_name: str, topic_prefix: str) -> str:
     """
     Copy a tool .py file, replacing the @tool(name="<original>") decorator
-    value with <suffixed_name>. Returns the temp file path.
+    value with <suffixed_name>, and prefixing the Kafka topic names with
+    <topic_prefix>_ so each participant's tools read their own topics.
+    Returns the temp file path.
     The caller is responsible for deleting the file after use.
     """
     src = Path(source_py).read_text()
+    # labs_patterns -> s1_labs_patterns, doctors_patterns -> s1_doctors_patterns,
+    # reports.raw -> s1_reports.raw
+    src = re.sub(r'\b(labs_patterns|doctors_patterns|reports\.raw)\b',
+                 rf'{topic_prefix}_\1', src)
     # Replace the name= value inside @tool(...) — handles single or double quotes
     patched = re.sub(
         rf'(name\s*=\s*["\']){re.escape(original_name)}(["\'])',
@@ -164,6 +195,9 @@ def main():
 
     # ── Ask participant for their initials ───────────────────────────────────
     initials = _get_initials()
+    topic_prefix = _get_topic_prefix()
+    print(f'\n  📡 Tools will read topics: {topic_prefix}_labs_patterns, '
+          f'{topic_prefix}_doctors_patterns, {topic_prefix}_reports.raw')
 
     # ── Derive artifact names (agent: prefix, tools: suffix) ─────────────────
     agent_name   = f'{initials}_diagnostic_fraud_detector'
@@ -228,7 +262,7 @@ def main():
     # ── Step 3a: Import check_lab_fraud_pattern tool ─────────────────────────
     tmp_lab = _build_tool_py(
         f'{tools_dir}/check_lab_fraud_pattern.py',
-        'check_lab_fraud_pattern', tool_lab
+        'check_lab_fraud_pattern', tool_lab, topic_prefix
     )
     try:
         ok = run(
@@ -250,7 +284,7 @@ def main():
     # ── Step 3b: Import check_doctor_referral_pattern tool ───────────────────
     tmp_doctor = _build_tool_py(
         f'{tools_dir}/check_doctor_referral_pattern.py',
-        'check_doctor_referral_pattern', tool_doctor
+        'check_doctor_referral_pattern', tool_doctor, topic_prefix
     )
     try:
         ok = run(
@@ -272,7 +306,7 @@ def main():
     # ── Step 3c: Import analyze_test_necessity tool ───────────────────────────
     tmp_test = _build_tool_py(
         f'{tools_dir}/analyze_test_necessity.py',
-        'analyze_test_necessity', tool_test
+        'analyze_test_necessity', tool_test, topic_prefix
     )
     try:
         ok = run(

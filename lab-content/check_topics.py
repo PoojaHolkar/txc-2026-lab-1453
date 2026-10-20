@@ -1,9 +1,12 @@
 """
-check_topics.py — Verify reports.raw topic exists in Confluent Cloud.
+check_topics.py — Verify the reports.raw topic exists in Confluent Cloud.
 
 reports.raw is the only topic you need to create manually in the
 Confluent Cloud UI. The sink topics (labs_patterns, doctors_patterns)
 are created automatically by the Flink SQL CREATE TABLE statements.
+
+Optional: set LAB_PREFIX=s1 in .env to check s1_reports.raw instead
+(for a shared cluster where each student uses prefixed topic names).
 
 Run: python check_topics.py
 Credentials are loaded from .env in the same directory.
@@ -25,19 +28,22 @@ cfg = {
     'sasl.password':     os.getenv('SASL_PASSWORD'),
 }
 
+prefix = os.getenv('LAB_PREFIX', '').strip()
+topic = f'{prefix}_reports.raw' if prefix else 'reports.raw'
+
 admin = AdminClient(cfg)
 existing = admin.list_topics(timeout=10).topics
 
-print('📋 Verifying reports.raw topic...\n')
+print(f'📋 Verifying {topic} topic...\n')
 
-if 'reports.raw' in existing:
-    partitions = len(existing['reports.raw'].partitions)
-    print(f'   ✅ reports.raw — exists ({partitions} partitions)')
+if topic in existing:
+    partitions = len(existing[topic].partitions)
+    print(f'   ✅ {topic} — exists ({partitions} partitions)')
     print('\n✅ Ready.')
     print('   Next step: run Flink SQL cells 1–6 in Confluent Cloud.')
 else:
-    print('   ❌ reports.raw — NOT FOUND')
+    print(f'   ❌ {topic} — NOT FOUND')
     print('\n⚠️  Create it first:')
     print('   → Confluent Cloud → Topics → Add topic')
-    print('   → Name: reports.raw  |  Partitions: 3  |  Default settings')
+    print(f'   → Name: {topic}  |  Partitions: 3  |  Default settings')
     sys.exit(1)
